@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter: Pesos to Dollar and Yen</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #6B73FF 10%, #000DFF 100%);
+            color: #fff;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1, p, .nav-link {
+            color: #fff;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #000;
+        }
+        nav {
+            margin-top: 30px;
+        }
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Currency Converter</h1>
+        <p class="text-center">Convert Pesos to Dollar and Yen</p>
+        <div class="form-group">
+            <label for="pesoAmount">Enter amount in Pesos:</label>
+            <input type="number" id="pesoAmount" class="form-control" placeholder="Enter peso amount" value="100">
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" onclick="convertCurrencies()">Convert</button>
+        </div>
+        <div id="output" class="result text-center"></div>
+        <nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="page2.html">Euro and Pound</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function convertCurrencies() {
+            // Conversion rates
+            var pesoToDollar = 0.018;
+            var pesoToYen = 2.42;
+
+            // Get input value
+            var pesos = parseFloat(document.getElementById('pesoAmount').value);
+
+            // Convert Pesos
+            var dollars = pesos * pesoToDollar;
+            var yen = pesos * pesoToYen;
+
+            // Display results
+            var output = `
+                <h3>Results:</h3>
+                <p>${pesos.toFixed(2)} Pesos = ${dollars.toFixed(2)} Dollars</p>
+                <p>${pesos.toFixed(2)} Pesos = ${yen.toFixed(2)} Yen</p>
+            `;
+            document.getElementById('output').innerHTML = output;
+        }
+    </script>
+</body>
+</html>
